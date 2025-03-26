@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import java.util.Locale
 import kotlin.random.Random
-
+//commit test
 class DieFragment : Fragment() {
 
     private val dieViewModel: DieViewModel by lazy {
