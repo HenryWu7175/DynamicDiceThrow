@@ -37,6 +37,7 @@ class ButtonFragment : Fragment() {
      * This allows an event occurrence to be propagated even
      * with no associated state change
      */
+    //low coupling, high cohesion is used here by implementing the interface in the activity
     interface ButtonInterface {
         fun buttonClicked()
     }

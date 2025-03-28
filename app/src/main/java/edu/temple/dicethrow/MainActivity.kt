@@ -19,6 +19,7 @@ in both portrait and landscape configurations.
 The Activity layout files for both Portrait and Landscape are already provided
 */
 
+//implement the interface in the activity so that we can use the fragment transactions
 class MainActivity : AppCompatActivity(), ButtonFragment.ButtonInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +29,8 @@ class MainActivity : AppCompatActivity(), ButtonFragment.ButtonInterface {
             - Show _only_ ButtonFragment if portrait
             - show _both_ fragments if Landscape
           */
+        //testing
+
         if (savedInstanceState == null) {
             if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
                 //this only executes if in portrait and if the activity is being created for the first time
@@ -45,7 +48,13 @@ class MainActivity : AppCompatActivity(), ButtonFragment.ButtonInterface {
             //if the activity is being recreated after a configuration change, the containers will be corrected
             // to show the correct fragment for landscape mode
            if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
+               //removes the fragment from the backstack(aka the diefragment when it swapped with the buttonfragment)
                supportFragmentManager.popBackStack()
+               //adds the fragments to the landscape mode
+               supportFragmentManager.beginTransaction()
+                   .add(R.id.container1, ButtonFragment())
+                   .add(R.id.container2, DieFragment())
+                   .commit()
            }
         }
 
